@@ -6,7 +6,7 @@ typedef struct node
    int data;
    struct node *next;
 }Node;
-Node addnum(Node *head, int num)
+void addnum(Node *head, int num)
 {
     Node *temp = head;
     Node *foot = head;
@@ -20,7 +20,7 @@ Node addnum(Node *head, int num)
         {
             temp = temp->next;
         }
-        addnum(Node *temp, 1);
+        addnum(temp, 1);
         temp = head;
     }
     else{
@@ -31,5 +31,4 @@ Node addnum(Node *head, int num)
         }
         foot = temp;
     }
-    return head;
 }
