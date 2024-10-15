@@ -9,7 +9,7 @@ typedef struct node
 Node addnum(Node *head, int num)
 {
     Node *temp = head;
-    Node *foot;
+    Node *foot = head;
 
     while(foot != NULL){
         foot = foot->next;
