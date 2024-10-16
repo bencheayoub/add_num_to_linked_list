@@ -6,29 +6,31 @@ typedef struct node
    int data;
    struct node *next;
 }Node;
+
+
 void addnum(Node *head, int num)
 {
     Node *temp = head;
-    Node *foot = head;
-
-    while(foot != NULL){
-        foot = foot->next;
-        }
-    if (temp->data + num > 9)
+    Node *foot = head->next;
+    while(foot->next != NULL)
     {
-        while(temp != foot)
-        {
-            temp = temp->next;
-        }
-        addnum(temp, 1);
+        foot = foot->next;
+    }
+    while(temp->next != foot)
+    {
+        temp = temp->next;
+    }
+    if (num + foot->data < 9)
+    {
+        foot->data = num + foot->data;
+        foot = temp;
         temp = head;
     }
-    else{
-        foot->data += num;
-        while(temp != foot)
-        {
-            temp = temp->next;
-        }
-        foot = temp;
+    else
+    {
+        foot->data = (num + foot->data) % 10;
+        int carry = (num + foot->data) / 10;
+        temp->data += (num + foot->data);
+        temp = head;
     }
 }
