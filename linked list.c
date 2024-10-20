@@ -7,7 +7,7 @@ typedef struct node
    struct node *next;
 }Node;
 
-
+//this code will b fixed as soon as possible
 void addnum(Node *head, int num)
 {
     Node *temp = head;
