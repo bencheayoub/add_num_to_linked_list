@@ -13,7 +13,6 @@ Node* createNode(int data) {
     return newNode;
 }
 
-// Function to add a number to the linked list
 void addnum(Node *head, int num) {
     Node *temp = head;
     Node *prev = NULL;
