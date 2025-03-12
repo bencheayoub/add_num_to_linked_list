@@ -22,7 +22,6 @@ void addnum(Node *head, int num) {
         temp = temp->next;
     }
 
-    // Add the number to the last node
     temp->data += num;
 
     while (temp->data > 9) {
