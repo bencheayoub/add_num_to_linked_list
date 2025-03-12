@@ -38,7 +38,6 @@ void addnum(Node *head, int num) {
     }
 }
 
-// Function to print the linked list
 void printList(Node *head) {
     Node *temp = head;
     while (temp != NULL) {
@@ -49,7 +48,6 @@ void printList(Node *head) {
 }
 
 int main() {
-    // Example usage
     Node *head = createNode(1);
     head->next = createNode(2);
     head->next->next = createNode(3);
