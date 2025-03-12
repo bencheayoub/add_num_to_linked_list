@@ -17,7 +17,6 @@ void addnum(Node *head, int num) {
     Node *temp = head;
     Node *prev = NULL;
 
-    // Traverse to the end of the list
     while (temp->next != NULL) {
         prev = temp;
         temp = temp->next;
