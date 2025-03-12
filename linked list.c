@@ -25,7 +25,6 @@ void addnum(Node *head, int num) {
     // Add the number to the last node
     temp->data += num;
 
-    // Handle carryover
     while (temp->data > 9) {
         temp->data -= 10;
         if (prev == NULL) {
