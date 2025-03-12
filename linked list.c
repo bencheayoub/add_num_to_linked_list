@@ -27,7 +27,6 @@ void addnum(Node *head, int num) {
     while (temp->data > 9) {
         temp->data -= 10;
         if (prev == NULL) {
-            // If there's no previous node, create a new head
             Node* newNode = createNode(1);
             newNode->next = head;
             head = newNode;
