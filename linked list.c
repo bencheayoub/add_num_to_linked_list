@@ -1,36 +1,72 @@
-#include<stdio.h>
-#include <stdlib.h> 
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct node
-{
-   int data;
-   struct node *next;
-}Node;
+typedef struct node {
+    int data;
+    struct node *next;
+} Node;
 
-//this code will b fixed as soon as possible
-void addnum(Node *head, int num)
-{
+// Function to create a new node
+Node* createNode(int data) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to add a number to the linked list
+void addnum(Node *head, int num) {
     Node *temp = head;
-    Node *foot = head->next;
-    while(foot->next != NULL)
-    {
-        foot = foot->next;
-    }
-    while(temp->next != foot)
-    {
+    Node *prev = NULL;
+
+    // Traverse to the end of the list
+    while (temp->next != NULL) {
+        prev = temp;
         temp = temp->next;
     }
-    if (num + foot->data < 9)
-    {
-        foot->data = num + foot->data;
-        foot = temp;
-        temp = head;
+
+    // Add the number to the last node
+    temp->data += num;
+
+    // Handle carryover
+    while (temp->data > 9) {
+        temp->data -= 10;
+        if (prev == NULL) {
+            // If there's no previous node, create a new head
+            Node* newNode = createNode(1);
+            newNode->next = head;
+            head = newNode;
+        } else {
+            prev->data += 1;
+        }
+        prev = temp;
+        temp = temp->next;
     }
-    else
-    {
-        foot->data = (num + foot->data) % 10;
-        int carry = (num + foot->data) / 10;
-        temp->data += (num + foot->data);
-        temp = head;
+}
+
+// Function to print the linked list
+void printList(Node *head) {
+    Node *temp = head;
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
     }
+    printf("\n");
+}
+
+int main() {
+    // Example usage
+    Node *head = createNode(1);
+    head->next = createNode(2);
+    head->next->next = createNode(3);
+
+    printf("Original list: ");
+    printList(head);
+
+    addnum(head, 7);
+
+    printf("List after adding 7: ");
+    printList(head);
+
+    return 0;
 }
